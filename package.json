@@ -1,0 +1,12 @@
+{
+  "name": "bytebank",
+  "version": "1.0.0",
+  "description": "bytebank_Orientado_Objetos",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "author": "Hebert Montarroyos",
+  "license": "ISC",
+  "type": "module"
+}
