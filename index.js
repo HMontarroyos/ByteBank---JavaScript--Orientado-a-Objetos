@@ -1,27 +1,37 @@
-//Projeto Bytebank Orientado a Objetos 
 import {Cliente} from "./Cliente.js";
-import {Conta} from "./Conta.js";
+import {ContaCorrente} from "./Conta/ContaCorrente.js";
+import { ContaPoupanca } from "./Conta/ContaPoupanca.js";
+import { ContaSalario } from "./Conta/ContaSalario.js";
+
+import {Gerente} from "./Funcionario/Gerente.js"
+import {Diretor} from "./Funcionario/Diretor.js"
+import {SistemaAutenticacao} from "./SistemaAutenticavel.js"
+
+/*
+// Clientes Banco 
 
 const cliente1 = new Cliente("Ricardo", 11122233309);
-const cliente2 = new Cliente("Alice", 88822233309);
-const cliente3 = new Cliente("Hebert", 15486709836);
 
-const contaCorrenteRicardo = new Conta(1001, cliente1);
-contaCorrenteRicardo.depositar(500);
-contaCorrenteRicardo.sacar(100);
+const contaCorrenteRicardo = new ContaCorrente( cliente1, 1001);
+const contaPoupanca = new ContaPoupanca(50, cliente1, 1001);
+const contaSalario = new ContaSalario(cliente1);
+contaSalario.depositar(100);
+contaSalario.sacar(10);
 
-const contaCorrenteHebert = new Conta(9883, cliente3);
-contaCorrenteHebert.depositar(400);
-contaCorrenteHebert.sacar(100)
-contaCorrenteHebert.tranferir(200, contaCorrenteRicardo);
+console.log(contaSalario);
 
-const conta2 = new Conta(102, cliente2);
+*/
 
-let valor = 200;
-contaCorrenteRicardo.tranferir(valor, conta2);
+const diretor =  new Diretor("Rodrigo", 10000, 12345678900);
+diretor.cadastrarSenha("123456")
+const gerente =  new Gerente("Ricardo",  5000, 12378945601);
+gerente.cadastrarSenha("123");
 
-console.log(contaCorrenteRicardo);
-console.log(contaCorrenteHebert);
+const cliente = new Cliente("Lais", 78945612379, "456");
+const gerenteEstaLogado = SistemaAutenticacao.login(gerente, "123");
+const diretorEstaLogado = SistemaAutenticacao.login(diretor, "123456");
 
 
+const clienteEstaLogado = SistemaAutenticacao.login(cliente, "456");
 
+console.log(gerenteEstaLogado, diretorEstaLogado, clienteEstaLogado);
